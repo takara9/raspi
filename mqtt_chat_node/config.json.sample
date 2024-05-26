@@ -1,0 +1,5 @@
+{
+   "broker_url": "mqtt://192.168.1.40",
+   "broker_topic": "listen/0000",
+   "reply_topic": "reply/1000"
+}

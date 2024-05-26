@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @device_sensor.name %>
+</p>
+
+<p>
+  <strong>Posision:</strong>
+  <%= @device_sensor.posision %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @device_sensor.device %>
+</p>
+
+<%= link_to 'Edit', edit_device_sensor_path(@device_sensor) %> |
+<%= link_to 'Back', device_sensors_path %>

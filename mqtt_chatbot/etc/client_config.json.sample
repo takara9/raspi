@@ -1,0 +1,6 @@
+{
+  "broker_url": "mqtt://192.168.1.20",
+  "broker_topic": "listen/0000",
+  "reply_topic": "350f9964",
+  "user_id": "350f9964"	
+}

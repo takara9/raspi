@@ -1,0 +1,16 @@
+[Unit]
+Description=GPIO Server
+Documentation=github
+
+[Service]
+Type=simple
+ExecStart=/usr/local/remote-sw/app.py
+ExecStop=/bin/kill -WINCH ${MAINPID}
+KillMode=process
+Restart=on-failure
+User=root
+Group=root
+
+
+[Install]
+WantedBy=multi-user.target

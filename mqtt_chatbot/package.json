@@ -1,0 +1,29 @@
+{
+  "name": "mqtt_chatbot",
+  "version": "0.1.0",
+  "description": "MQTT Chatbot with Watson conversation",
+  "main": "chat_bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takara9/mqtt_chatbot.git"
+  },
+  "keywords": [
+    "MQTT",
+    "Watson"
+  ],
+  "author": "Maho Takara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takara9/mqtt_chatbot/issues"
+  },
+  "homepage": "https://github.com/takara9/mqtt_chatbot#readme",
+  "dependencies": {
+    "async": "^2.1.4",
+    "fs": "0.0.1-security",
+    "mqtt": "^2.1.3",
+    "watson-developer-cloud": "^2.9.0"
+  }
+}

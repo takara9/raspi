@@ -1,0 +1,71 @@
+<h1>ページをアクセスした時点の状況</h1>
+
+<p>現在の気温</p>
+<p>
+机上の気温 <meter value=<%= @temp_desktop %> min="0" max="35"></meter> 
+<%= @temp_desktop %>度<br/>
+床上の気温 <meter value=<%= @temp_floor %> min="0" max="35"></meter> 
+<%= @temp_floor %>度<br/>
+東側窓気温 <meter value=<%= @temp_window %> min="0" max="35"></meter> 
+<%= @temp_window %>度<br/>
+</p>
+<br/>
+
+<p>現在の湿度</p>
+<p>
+机上の湿度 <meter value=<%= @humd_desktop %> min="0" max="100"></meter> 
+<%= @humd_desktop %>パーセント<br/>
+床上の湿度 <meter value=<%= @humd_floor %> min="0" max="100"></meter> 
+<%= @humd_floor %>パーセント<br/>
+東側窓湿度 <meter value=<%= @humd_window %> min="0" max="100"></meter> 
+<%= @humd_window %>パーセント<br/>
+</p>
+<br/>
+
+<p>現在の気圧</p>
+<p>
+大気圧 <meter value=<%= @pressure %> min="960" max="1040"></meter> 
+<%= @pressure %> ヘクトパスカル<br/>
+</p>
+<br/>
+
+<p>現在の消費電力</p>
+<p>
+消費電力 <meter value=<%= @power %> min="0" max="1000"></meter> 
+<%= @power %> ワットアワー<br/>
+</p>
+<br/>
+
+<h1>リアルタイム状況</h1>
+<!--
+<script type="text/javascript" src='js/canvas.js'></script>
+<script type="text/javascript" src='js/getmsg.js'></script>
+<script type="text/javascript" src='js/mqttws31.js'></script>
+-->
+<%= javascript_include_tag 'mqtt/canvas' %>
+<%= javascript_include_tag 'mqtt/getmsg' %>
+<%= javascript_include_tag 'mqtt/mqttws31' %>
+
+<script type="text/javascript">
+// Create a client instance
+client = new Paho.MQTT.Client("192.155.208.116", Number(8080), "clientId");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+</script>
+
+<p><b>消費電力の表示とアラート表示のテスト</b></p>
+
+キャンバス開始<br>
+<canvas id="canvassample" width="140" height="40"></canvas><br>
+キャンバス終了<br>
+<br>
+<b>概要</b>
+<p>
+このサンプルページは、インターネット上のMQTTブローカーに、ウェブサービス経由でアクセスして、
+リアルタイムの消費電力のデータを取得するものです。
+</p>

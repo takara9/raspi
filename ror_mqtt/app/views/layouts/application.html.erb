@@ -1,0 +1,71 @@
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Description" content="俺の俺による俺のためのリンク集">
+<meta name="Keywords" content="cloud,iot,softlayer,aws,ruby,python">
+
+<title>なんだこりゃ</title>
+<!---
+<link rel="stylesheet" href="/base.css" type="text/css" media="screen,tv"> 
+--->
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+
+
+<body>
+<div id="wrapper">
+<div id="header">
+
+<!-- タイトル -->
+<p class="logo"><a href="/index.html" >Ruby on Railsの勉強</a></p>
+
+<!-- 概要 -->
+<p class="description">自己学習の成果物の置き場であり、外向けではありませんよ</p>
+</div><!-- / header end -->
+
+<nav>
+<div id="globalnavi">　<!-- グローバルナビゲーション -->
+<ul>
+  <li><a href="/top/show">トップページ</a></li>
+  <li><a href="/devices">デバイスのリスト</a></li>
+  <li><a href="/device_sensors">センサーのリスト</a></li>
+</ul>
+</div>  <!-- / globalnavi end -->
+</nav>
+
+<div id="container">
+<div id="contents">
+<%= yield %>
+</div> <!-- contents -->
+</div> <!-- container -->
+
+<div id="sidebar">
+<!-- サイドバー ここから -->
+<p class="sidetitle">生活リンク集</p>
+<ul class="localnavi">
+  <li><a href="/top/show">トップページ</a></li>
+  <li><a href="/devices">デバイスのリスト</a></li>
+  <li><a href="/device_sensors">センサーのリスト</a></li>
+</div>
+
+
+<div id="footer">
+<!-- コピーライト -->
+<p>Copyright &copy; Maho Takara. All Rights Reserved.</p>
+</div><!-- / footer end -->
+</div><!-- / wrapper end -->
+
+</body>
+</html>
+
