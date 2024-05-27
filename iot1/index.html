@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MQTT Realtime Printing Sample</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+</head>
+<body>
+
+<!---------------------------------------------------------------------->
+<style>
+    body {
+    background: #333;
+    }
+    /*Centering the gauge*/
+    canvas {
+    display: block;
+    float: left;
+    margin: 10px auto;
+    }
+</style>
+<!---------------------------------------------------------------------->
+<script type="text/javascript" src='js/canvas.js'></script>
+<script type="text/javascript" src='js/getmsg.js'></script>
+<script type="text/javascript" src='js/mqttws31.js'></script>
+<script type="text/javascript">
+// Create a client instance
+client = new Paho.MQTT.Client("www.mahotakara.wjg.jp", Number(8080), "clientId");
+
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+
+// connect the client
+client.connect({onSuccess:onConnect});
+</script>
+
+
+<!---------------------------------------------------------------------->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.gauge.js"></script>
+<!---------------------------------------------------------------------->
+
+<h1 style="color:#fff;">ラズパイのセンサーリアルタイム表示</h1>
+<font color="#fff">センサーからの1分間隔のメッセージ受信で自動更新されます。</font>
+
+<table>
+<tr>
+<td>
+<canvas id="canvassample" width="140" height="40"></canvas>
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<td><canvas id="gauge1" width="200" height="200"></canvas></td>
+<td><canvas id="gauge2" width="200" height="200"></canvas></td>
+</tr>
+<tr>
+<td><center><font color="white">大気圧</font></center></td>
+<td><center><font color="white">消費電力</font></center></td>
+</tr>
+<tr>
+<td><canvas id="gauge3" width="200" height="100"></canvas></td>
+<td><canvas id="gauge4" width="200" height="100"></canvas></td>
+<td><canvas id="gauge5" width="200" height="100"></canvas></td>
+</tr>
+<tr>
+<td><center><font color="white">温度 机上</font></center></td>
+<td><center><font color="white">温度 窓サッシ</font></center></td>
+<td><center><font color="white">温度 床上</font></center></td>
+</tr>
+
+<tr>
+<td><canvas id="gauge6" width="200" height="100"></canvas></td>
+<td><canvas id="gauge7" width="200" height="100"></canvas></td>
+<td><canvas id="gauge8" width="200" height="100"></canvas></td>
+</tr>
+<tr>
+<td><center><font color="white">湿度 机上</font></center></td>
+<td><center><font color="white">湿度 窓サッシ</font></center></td>
+<td><center><font color="white">湿度 床上</font></center></td>
+</tr>
+
+</table>
+
+
+<script>
+$(document).ready(function (){
+$("#gauge1").gauge(0, {min: 0, max: 1100, color: "#8BC34A", unit: " HPa", font: "80px verdana"});
+  $("#gauge2").gauge(0, {min: 0, max: 700, color: "#C38B4A", unit: " WHr", font: "80px verdana"});
+
+  $("#gauge3").gauge(0, {min: 0, max: 45, color: "#8BC34A", unit: " C", font: "80px verdana" ,type: "halfcircle"});
+  $("#gauge4").gauge(0, {min: 0, max: 45, color: "#8BC34A", unit: " C", font: "80px verdana" ,type: "halfcircle"});
+  $("#gauge5").gauge(0, {min: 0, max: 45, color: "#8BC34A", unit: " C", font: "80px verdana" ,type: "halfcircle"});
+
+  $("#gauge6").gauge(0, {min: 0, max: 100, color: "#8BC34A", unit: " %", font: "80px verdana" ,type: "halfcircle"});
+  $("#gauge7").gauge(0, {min: 0, max: 100, color: "#8BC34A", unit: " %", font: "80px verdana" ,type: "halfcircle"});
+  $("#gauge8").gauge(0, {min: 0, max: 100, color: "#8BC34A", unit: " %", font: "80px verdana" ,type: "halfcircle"});
+
+});
+</script>
+
